@@ -11,23 +11,21 @@
 
     <style>
         /* =========================================
-           SCROLLBAR PERSONALIZADA (Combinando com o tema)
+           SCROLLBAR PERSONALIZADA
            ========================================= */
-        /* Para navegadores Chrome, Edge, Safari */
         ::-webkit-scrollbar {
-            width: 10px; /* Largura da scrollbar */
+            width: 10px;
         }
         ::-webkit-scrollbar-track {
-            background: #f1f1f1; /* Cor do fundo da barra */
+            background: #f1f1f1;
         }
         ::-webkit-scrollbar-thumb {
-            background: #2c3e50; /* Cor do indicador (Verde escuro elegante) */
-            border-radius: 10px; /* Arredondamento */
+            background: #2c3e50;
+            border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #1a252f; /* Cor ao passar o mouse */
+            background: #1a252f;
         }
-        /* Para navegadores Firefox */
         html {
             scrollbar-width: thin;
             scrollbar-color: #2c3e50 #f1f1f1;
@@ -48,7 +46,7 @@
             line-height: 1.6;
             background-color: #ffffff;
             width: 100%;
-            overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+            overflow-x: hidden;
         }
 
         /* =========================================
@@ -97,22 +95,26 @@
         }
 
         /* =========================================
-           SEÇÕES PARALLAX (Fundo Dinâmico)
+           SEÇÕES PARALLAX (Fundo Dinâmico e Responsivo)
            ========================================= */
         .parallax-section {
             width: 100%;
-            min-height: 650px;
+            min-height: 650px; /* Altura boa para PC */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             
+            /* EFEITO PARALLAX */
             background-attachment: fixed;
             -webkit-background-attachment: fixed;
-            background-position: center;
+            background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
+            
+            /* Cor de fundo de reserva (para não ficar branco enquanto carrega a imagem) */
+            background-color: #e6dbc9; 
         }
 
         .parallax-overlay {
@@ -325,11 +327,11 @@
         }
 
         /* =========================================
-           RESPONSIVIDADE
+           RESPONSIVIDADE AVANÇADA (Ajuste das imagens de fundo)
            ========================================= */
         @media (max-width: 992px) {
             .container { gap: 40px; }
-            .parallax-section { min-height: 500px; }
+            .parallax-section { min-height: 550px; }
         }
 
         @media (max-width: 768px) {
@@ -343,11 +345,16 @@
                 justify-content: center;
                 gap: 12px 20px;
             }
+            
+            /* MELHORIA DE RESPONSIVIDADE DAS IMAGENS PARALLAX NO CELULAR */
             .parallax-section {
-                min-height: 450px;
+                min-height: 450px; /* Altura ajustada para não ficar gigante no celular */
                 background-attachment: fixed;
                 -webkit-background-attachment: fixed;
+                background-position: center center; /* Mantém o centro da imagem sempre visível */
+                background-size: cover;
             }
+            
             .parallax-content h2, .parallax-content h1 { font-size: 28px; }
             .container, .content-section.reverse .container {
                 flex-direction: column !important;
@@ -361,7 +368,11 @@
         }
 
         @media (max-width: 480px) {
-            .parallax-section { min-height: 380px; }
+            /* Ajuste fino para telas muito pequenas (ex: iPhone SE) */
+            .parallax-section {
+                min-height: 400px; 
+                background-position: center 30%; /* Move a imagem um pouco para cima pra focar nas pessoas */
+            }
             .parallax-content h2, .parallax-content h1 { font-size: 24px; }
             .parallax-content p { font-size: 14px; }
             .image-content img { width: 100%; max-height: 250px; }
@@ -434,8 +445,8 @@
         </div>
     </section>
 
-    <!-- Seção 5: Transição Respire (MOVIDA PARA ANTES DAS AULAS) -->
-    <section class="parallax-section" style="background-image: url('img/yoga-img3.webp');">
+    <!-- Seção 5: Transição Respire -->
+    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2070&auto=format&fit=crop');">
         <div class="parallax-overlay">
             <div class="parallax-content">
                 <h2>Respire fundo</h2>
@@ -444,7 +455,7 @@
         </div>
     </section>
 
-    <!-- Seção 6: AULAS (Logo abaixo do Respire fundo) -->
+    <!-- Seção 6: AULAS -->
     <section id="aulas" class="content-section" style="background-color: #fdfdfd;">
         <div class="container" style="flex-direction: column; gap: 30px;">
             <div class="text-content" style="text-align: center; max-width: 800px;">
@@ -527,7 +538,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript para destacar o link do menu conforme você rola a página -->
+    <!-- JavaScript -->
     <script>
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('nav ul li a');
