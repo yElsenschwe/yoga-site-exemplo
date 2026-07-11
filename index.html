@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>YOGA - Harmonia e Bem-Estar</title>
+    <!-- Importando fontes elegantes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           SCROLLBAR PERSONALIZADA (Combinando com o tema)
+           ========================================= */
+        /* Para navegadores Chrome, Edge, Safari */
+        ::-webkit-scrollbar {
+            width: 10px; /* Largura da scrollbar */
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Cor do fundo da barra */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2c3e50; /* Cor do indicador (Verde escuro elegante) */
+            border-radius: 10px; /* Arredondamento */
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1a252f; /* Cor ao passar o mouse */
+        }
+        /* Para navegadores Firefox */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #2c3e50 #f1f1f1;
+        }
+
+        /* =========================================
+           RESET E CONFIGURAÇÕES GLOBAIS
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #4a4a4a;
+            line-height: 1.6;
+            background-color: #ffffff;
+            width: 100%;
+            overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+        }
+
+        /* =========================================
+           CABEÇALHO (HEADER)
+           ========================================= */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #2c3e50;
+            white-space: nowrap;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #2c3e50;
+            border-bottom: 1px solid #2c3e50;
+            padding-bottom: 2px;
+        }
+
+        /* =========================================
+           SEÇÕES PARALLAX (Fundo Dinâmico)
+           ========================================= */
+        .parallax-section {
+            width: 100%;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            
+            background-attachment: fixed;
+            -webkit-background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .parallax-overlay {
+            background-color: rgba(0, 0, 0, 0.15);
+            width: 100%;
+            height: 100%;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .parallax-content h2, .parallax-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 52px);
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .parallax-content p {
+            font-size: clamp(16px, 2vw, 22px);
+            color: #fff;
+            max-width: 700px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            padding: 0 15px;
+        }
+
+        /* =========================================
+           SEÇÕES DE CONTEÚDO (Texto e Imagem)
+           ========================================= */
+        .content-section {
+            padding: 80px 20px;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            width: 100%;
+        }
+
+        .content-section.reverse .container {
+            flex-direction: row-reverse;
+        }
+
+        .text-content {
+            flex: 1;
+            width: 100%;
+        }
+
+        .text-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(26px, 3vw, 40px);
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .text-content p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .image-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: #f8f9fa; 
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .image-content img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            width: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* Botões Padrão */
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            border: 1px solid #999;
+            background-color: transparent;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: #2c3e50;
+            color: #fff;
+            border-color: #2c3e50;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* =========================================
+           SEÇÃO AULAS (Cards)
+           ========================================= */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            width: 280px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .card p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* =========================================
+           SEÇÃO CONTATO
+           ========================================= */
+        .contact-info {
+            list-style: none;
+            margin: 20px 0;
+        }
+        .contact-info li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+        .contact-form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+        }
+        .contact-form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* =========================================
+           SEÇÃO RESERVAS
+           ========================================= */
+        .reserve-box {
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #eee;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .reserve-box p {
+            margin-bottom: 15px;
+        }
+
+        /* =========================================
+           RODAPÉ
+           ========================================= */
+        footer {
+            background-color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            font-size: 13px;
+            color: #888;
+        }
+
+        footer a {
+            color: #666;
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           RESPONSIVIDADE
+           ========================================= */
+        @media (max-width: 992px) {
+            .container { gap: 40px; }
+            .parallax-section { min-height: 500px; }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 20px;
+            }
+            .parallax-section {
+                min-height: 450px;
+                background-attachment: fixed;
+                -webkit-background-attachment: fixed;
+            }
+            .parallax-content h2, .parallax-content h1 { font-size: 28px; }
+            .container, .content-section.reverse .container {
+                flex-direction: column !important;
+                text-align: center;
+                gap: 30px;
+            }
+            .text-content { padding: 0 10px; }
+            .image-content img { max-height: 300px; width: 80%; }
+            .cards-container { flex-direction: column; align-items: center; }
+            .card { width: 100%; max-width: 400px; }
+        }
+
+        @media (max-width: 480px) {
+            .parallax-section { min-height: 380px; }
+            .parallax-content h2, .parallax-content h1 { font-size: 24px; }
+            .parallax-content p { font-size: 14px; }
+            .image-content img { width: 100%; max-height: 250px; }
+            .content-section { padding: 50px 15px; }
+            .reserve-box { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">✻ YOGA ✻</div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Início</a></li>
+                <li><a href="#sobre">Sobre nós</a></li>
+                <li><a href="#aulas">Aulas</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#reservas">Reservas Online</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção 1: Hero -->
+    <section id="home" class="parallax-section" style="background-image: url('img/yoga-img1.webp');">
+        <div class="parallax-overlay">
+            <div class="parallax-content">
+                <h1>✻ Harmonize a sua vida ✻</h1>
+                <p>— Aulas de yoga para seu bem-estar —</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 2: Sobre Nós -->
+    <section id="sobre" class="content-section">
+        <div class="container">
+            <div class="text-content">
+                <h2>✻ Sobre nós</h2>
+                <p>Aqui é onde o seu texto começa. Basta clicar e começar a escrever. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo.</p>
+                <a href="#" class="btn">Leia mais</a>
+            </div>
+            <div class="image-content">
+               <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2070&auto=format&fit=crop" alt="Pessoa meditando">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 3: Transição Aulas -->
+    <section class="parallax-section" style="background-image: url('img/yoga-img2.webp');">
+        <div class="parallax-overlay">
+            <div class="parallax-content">
+                <h2>Encontre seu equilíbrio</h2>
+                <p>Conecte corpo e mente através da prática constante.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 4: Filosofia -->
+    <section id="filosofia" class="content-section reverse">
+        <div class="container">
+            <div class="text-content">
+                <h2>✻ Nossa filosofia</h2>
+                <p>Aqui é onde o seu texto começa. Basta clicar e começar a escrever. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo.</p>
+                <a href="#aulas" class="btn">Aulas</a>
+            </div>
+            <div class="image-content">
+               <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop" alt="Pedras e bambu">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 5: Transição Respire (MOVIDA PARA ANTES DAS AULAS) -->
+    <section class="parallax-section" style="background-image: url('img/yoga-img3.webp');">
+        <div class="parallax-overlay">
+            <div class="parallax-content">
+                <h2>Respire fundo</h2>
+                <p>Transforme sua energia e renove suas forças.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 6: AULAS (Logo abaixo do Respire fundo) -->
+    <section id="aulas" class="content-section" style="background-color: #fdfdfd;">
+        <div class="container" style="flex-direction: column; gap: 30px;">
+            <div class="text-content" style="text-align: center; max-width: 800px;">
+                <h2>✻ Nossas Aulas</h2>
+                <p>Escolha a modalidade que mais combina com você. Turmas para todos os níveis!</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <h3>Vinyasa Flow</h3>
+                    <p>Movimentos fluidos e sincronizados com a respiração. Ideal para quem busca energia e alongamento.</p>
+                    <p><strong>Horários:</strong> 07:00 e 18:00</p>
+                </div>
+                <div class="card">
+                    <h3>Hatha Yoga</h3>
+                    <p>Posturas estáticas e foco no alinhamento corporal. Perfeito para iniciantes e prática profunda.</p>
+                    <p><strong>Horários:</strong> 09:00 e 19:30</p>
+                </div>
+                <div class="card">
+                    <h3>Meditação Guiada</h3>
+                    <p>Aulas focadas no relaxamento mental, respiração e mindfulness para aliviar o estresse do dia a dia.</p>
+                    <p><strong>Horários:</strong> 20:30 (Quartas e Sextas)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 7: CONTATO -->
+    <section id="contato" class="content-section">
+        <div class="container">
+            <div class="text-content">
+                <h2>✻ Entre em contato</h2>
+                <p>Ficou com alguma dúvida sobre as aulas ou quer agendar uma visita? Nossa equipe está pronta para te ajudar!</p>
+                <ul class="contact-info">
+                    <li><strong>📞 Telefone:</strong> (21) 99999-9999</li>
+                    <li><strong>📧 E-mail:</strong> contato@yogaharmonia.com</li>
+                    <li><strong>📍 Endereço:</strong> Avenida Pasteur 520, Rio de Janeiro</li>
+                </ul>
+                <a href="#reservas" class="btn">Agendar horário</a>
+            </div>
+            
+            <div class="image-content" style="background: #fff; padding: 20px; flex-direction: column; gap: 15px;">
+                <h3 style="font-family: 'Playfair Display', serif; color: #2c3e50;">Envie uma mensagem</h3>
+                <form class="contact-form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <textarea placeholder="Como podemos ajudar?"></textarea>
+                    <button type="submit" class="btn" style="border: none; cursor: pointer;">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 8: RESERVAS ONLINE -->
+    <section id="reservas" class="content-section reverse" style="background-color: #f8f9fa;">
+        <div class="container" style="flex-direction: column !important; gap: 20px; text-align: center;">
+            <div class="text-content" style="width: 100%;">
+                <h2>✻ Reservas Online</h2>
+                <p>Garanta o seu horário! Nossas vagas são limitadas para garantir a atenção personalizada que você merece.</p>
+            </div>
+            
+            <div class="reserve-box">
+                <p style="margin-bottom: 10px;"><strong>Próximas turmas disponíveis:</strong></p>
+                <p style="margin-bottom: 5px;">🌅 Manhã (7h00) - Vinyasa Flow</p>
+                <p style="margin-bottom: 5px;">🌇 Tarde (18h00) - Hatha Yoga</p>
+                <p style="margin-bottom: 25px;">🌙 Noite (20h30) - Meditação Guiada</p>
+                
+                <!-- Formulário simples de reserva -->
+                <input type="text" placeholder="Seu nome completo" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px; font-size: 14px;">
+                <a href="#" class="btn" style="width: 100%; display: block; box-sizing: border-box;">Reservar minha vaga agora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container" style="flex-direction: column; gap: 5px;">
+            <p>&copy; 2025 YOGA, Avenida Pasteur 520, Rio de Janeiro 04719-001</p>
+            <p>Desenvolvido por <a href="#">Webnode</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript para destacar o link do menu conforme você rola a página -->
+    <script>
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav ul li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
