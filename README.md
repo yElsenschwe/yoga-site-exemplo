@@ -3,7 +3,7 @@
 > Landing Page para estúdio de yoga com design minimalista, seções parallax e navegação suave.
 
 🌐 **Website:** https://www.pablogdev.com.br  
-🚀 **Demo:** https://pablog-7.github.io/yoga-harmonia/
+🚀 **Demo:** https://pablog-7.github.io/yoga-site-exemplo/
 
 ---
 
